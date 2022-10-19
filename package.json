@@ -22,7 +22,7 @@
     "eject": "react-scripts eject",
     "build:wasm": "cd wasm-lib && wasm-pack build --target web --out-dir pkg",
     "install:wasm": "npm install ./wasm-lib/pkg",
-    "start": "npm run build:wasm && npm install ./wasm-lib/pkg && react-scripts start",
+    "start": "npm run build:wasm && npm run install:wasm && react-scripts start",
     "build": "npm run build:wasm && react-scripts build"
   },
   "eslintConfig": {
