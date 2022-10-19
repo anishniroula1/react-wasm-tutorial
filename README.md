@@ -2,7 +2,7 @@
 1. If rust is not downloaded in your machine, use this command in your terminal:    
     ```curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh```
 
-2. Once you have rust in your machine run the following command from this project directory:
+2. Once you have rust in your machine run the following command from the react project directory:
 - ```npm install```
 - ``` npm run start```
 
