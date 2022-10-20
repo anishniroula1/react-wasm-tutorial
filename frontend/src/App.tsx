@@ -4,10 +4,10 @@ import './App.css';
 
 function App() {
   const [ans, setAns] = useState(0);
-  const [wasmDemo, setWasmDemo] = useState(null);
+  const [wasmDemo, setWasmDemo] = useState<any>(null);
 
   const loadWasm = async () => {
-    const wasmDemo = await import('wasm-lib');
+    const wasmDemo = await import('wasm-react-test');
     setWasmDemo(wasmDemo);
   };
   useEffect(() => {
@@ -20,7 +20,7 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <p>1 + 1 = 2</p>
+        <p>1 + 1 = {wasmDemo.add(1,1)}</p>
         <a
           className="App-link"
           href="https://reactjs.org"
