@@ -1,3 +1,7 @@
+extern crate js_sys;
+extern crate wasm_bindgen;
+
+use js_sys::Array;
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]

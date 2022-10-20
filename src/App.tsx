@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import init, { add } from "wasm-lib";
 
 function App() {
   const [ans, setAns] = useState(0);
+  const [wasmDemo, setWasmDemo] = useState(null);
+
+  const loadWasm = async () => {
+    const wasmDemo = await import('wasm-lib');
+    setWasmDemo(wasmDemo);
+  };
   useEffect(() => {
-    init().then(() => {
-      setAns(add(1, 1));
-    })
+    loadWasm();
   }, [])
   return (
     <div className="App">
@@ -17,7 +20,7 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <p>1 + 1 = {ans}</p>
+        <p>1 + 1 = 2</p>
         <a
           className="App-link"
           href="https://reactjs.org"
