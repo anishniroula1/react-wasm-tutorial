@@ -23,7 +23,7 @@
     "build:wasm": "cd wasm-lib && wasm-pack build --target web --out-dir pkg",
     "install:wasm": "npm install ./wasm-lib/pkg",
     "start": "react-scripts start",
-    "build": "npm run build:wasm && react-scripts build"
+    "build": "react-scripts build && npm run build:wasm && npm run install:wasm"
   },
   "eslintConfig": {
     "extends": [
