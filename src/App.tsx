@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import init, {add} from 'wasm-react-test';
+import init, {InitOutput} from 'wasm-react-test';
 
 function App() {
-  const [ans, setAns] = useState(0);
+  const [wasmFunc, setWasmFunc] = useState<InitOutput>({add: () => 0, subtract: () => 0, memory: new WebAssembly.Memory({initial: 1})});
+
+  const getAllFunction = async () => {
+      const wasm = await init();
+      setWasmFunc(wasm);
+  }
 
   useEffect(() => {
-    init().then(() => {
-      setAns(add(1, 1));
-    });
+    getAllFunction().then(r => r);
   }, [])
   return (
     <div className="App">
@@ -18,7 +21,7 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <p>1 + 1 = {ans}</p>
+        <p>1 + 1 = {wasmFunc.add(1,2)}</p>
         <a
           className="App-link"
           href="https://reactjs.org"
